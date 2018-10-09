@@ -18,16 +18,17 @@ class Player(object):
     # lands, to create a data set of randomly generated data that we can then study.
 
     def __init__(self):
-        self.space = 0
-        self.roll_history = []
-        self.space_history = []
-        self.jail = 0
-        self.jail_counter = 0
+        self.space = 0  # what space the Player is on
+        self.roll_history = []  # What his rolls have been (for checking)
+        self.space_history = []  # What spaces he has landed on (for final results)
+        self.jail = 0  # If the Player is in Jail or not
+        self.jail_counter = 0  # How many times the Player has failed to roll out of jail
 
     def take_turn(self):
-        # This is a method to make a given player take a turn, making the player roll 2 dice, recordning the total, and
-        # then changing their space to be appropriate space after they would move that many spaces, reseting them if
-        # they pass space 39, as then they would be back at go
+        # This is a method to make a given player take a turn, making the player roll 2 dice, recording the total, and
+        # then changing their space to be appropriate space after they would move that many spaces, resenting them if
+        # they pass space 39, as then they would be back at go, and also checking if they are in jail, and making them
+        # stop/not move as appropriate
         roll = 0
         roll_results = []
         for x in range(2):
@@ -58,7 +59,7 @@ class Player(object):
 
 
 def the_game(n):
-    # Simply creates a player, and makes them play a very long game of Monopoly, with a huge amount of turns
+    # Simply creates a player, and makes them play a very long game of Monopoly, with a huge amount of turns n
     alpha = Player()
     for k in range(n):
         alpha.take_turn()
